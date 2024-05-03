@@ -1,34 +1,30 @@
-
 numbers = [];
-inputNumber = int(0);
-higher = int(0);
+inputNumber = int(1);
+sum = int(0);
+media = float(0);
 
-print('O algoritmo exibe o maior valor digitado.\n');
+print('O algoritmo calculará a média dos números digitados.');
 
-# Inputs
+print('Digite números para serem inseridos no vetor. Aperte ENTER para parar.');
 
-while ( inputNumber != -1 ):
-    print(f'Digite um número para continuar ou -1 para encerrar.');
-    inputNumber = int(input('Digite: '));
-
-    if (inputNumber == -1):
-        break;
-    else:
+while (True):
+    try:
+        inputNumber = int(input('Digite: '));
+    
         numbers.append(inputNumber);
+    except:
+        break;
 
 
 # Processamento
 
-print(f'O vetor tem {len(numbers)} numeros');
-
-higher = numbers[0];
-
-print(numbers);
+print(f'\n{numbers}\n');
 
 for i in range(0 , len(numbers)):
-    if ( higher < numbers[i] ):
-        print(f'{numbers[i]} é maior que {higher}, portanto vou guardar {numbers[i]}');
-        higher = numbers[i];
-        
+    sum = sum + numbers[i];
+    print(f'Soma: {sum}  // Posição: {i}  // Vetor[i]: {numbers[i]}');
 
-print(f'O maior número é : {higher}');
+
+media = sum / len(numbers);
+
+print(f'\nMédia obtida: {media}');

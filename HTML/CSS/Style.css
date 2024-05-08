@@ -1,0 +1,26 @@
+
+body {
+    background-color: rgb(253, 253, 169);
+}
+
+.EpName {
+    font-weight: bold;
+    font-size: 22px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.Ep-Container {
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 2px solid black;
+    text-align: center;
+    background-color: aqua;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+img {
+    border-radius: 8px;
+    height: 40%;
+    width: 47%;
+}

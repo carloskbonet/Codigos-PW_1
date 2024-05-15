@@ -40,6 +40,7 @@ body {
     border-radius: 6px;
     width: 40%;
     height: 20%;
+    resize: none;
 }
 
 .edit-input {

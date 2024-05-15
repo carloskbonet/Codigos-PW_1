@@ -1,0 +1,68 @@
+body {
+    background: rgb(131,255,0);
+    background: linear-gradient(90deg, rgba(131,255,0,1) 0%, rgba(111,111,255,1) 51%, rgba(255,0,0,1) 100%);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    overflow-y: hidden;
+}
+
+.banner {
+    width: 100%;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.757);
+    width: auto;
+    height: auto;
+    margin-left: 1.5%;
+    margin-right: 10%;
+    margin-bottom: 80%;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding-left: 10%;
+}
+
+.title {
+    font-size: 28px;
+    text-decoration: underline;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.av-text {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.edit-textarea {
+    margin-top: 3%;
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 40%;
+    height: 20%;
+}
+
+.edit-input {
+    margin-top: 3%;
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 40%;
+    height: 7%;
+}
+
+.edit-submit {
+    margin-top: 3%;
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 6px;
+    width: 15%;
+    height: 6%;
+}
+
+.edit-submit:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+

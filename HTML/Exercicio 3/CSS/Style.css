@@ -1,0 +1,77 @@
+td,th {
+    border: 1px solid rgb(107, 77, 13);
+}
+
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+}
+
+body{
+    margin: 0%;
+    background-color: rgb(231, 231, 231);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.container {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 100%;
+}
+
+.main-table {
+    margin-top: 7%;
+    margin-left: 14%;
+    width: 70%;
+    height: 40%;
+}
+
+.navbar {
+    background-color: cornflowerblue;
+    height: 10%;
+    width: 100%;
+    padding: 0.4%;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+}
+
+.icon {
+    height: 100%;
+    border-radius: 20px;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 0px;
+    margin-left: 10%;
+}
+
+.buttons {
+    display: flex;
+    margin-left: 10%;
+    width: 100%;
+}
+
+.btnLogin {
+    margin-left: 40%;
+    border: 1px solid gray;
+    width: 6%;
+    border-radius: 100%;
+    background-color: rgb(255, 197, 109);
+    color: black;
+}
+
+.btnLogin:hover {
+    background-color: rgb(66, 66, 66);
+    color: white;
+}

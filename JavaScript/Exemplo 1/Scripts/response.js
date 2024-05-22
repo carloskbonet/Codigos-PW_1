@@ -28,9 +28,11 @@ function saudacoes() {
     }
 
     // For EACH
-    //comidas.forEach(comida => {
-
-    //});
+    /*comidas.forEach(comida => {
+        if ( food.toLowerCase() == comida.toLowerCase() ) {
+            checkFood = true;
+        }
+    });*/
 
 
     // For Normal
@@ -40,6 +42,7 @@ function saudacoes() {
             break;
         }
     }
+
 
     if ( checkFood == false ) {
         alert('A comida selecionada não está disponível.');

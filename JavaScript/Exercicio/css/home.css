@@ -1,3 +1,47 @@
 body {
-    background-color: blue;
+    background-color: white;
+}
+
+
+.container {
+    background-color: bisque;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 3%;
+    height: 85%;
+    padding: 1%;
+    border: 1px solid rgba(128, 128, 128, 0.452);
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.rules {
+    background-color: darkgoldenrod;
+    height: 30%;
+    margin-left: 11.5%;
+    width: 22%;
+    padding: 1%;
+    border: 1px solid grey;
+    border-radius: 8px;
+    visibility: hidden;
+    position: absolute;
+}
+
+.showRules {
+    cursor: default;
+    background-color: white;
+    margin-left: 30%;
+    margin-right: 30%;
+    height: 4%;
+    border: 1px solid grey;
+}
+
+.showRules:hover + .rules {
+    visibility: visible;
+}
+
+.btnStyle {
+    margin-top: 1%;
+    width: 20%;
 }

@@ -1,10 +1,10 @@
 body {
-    background-color: white;
+    background-color: rgb(128, 168, 109);
 }
 
 
 .container {
-    background-color: bisque;
+    background-color: rgb(255, 245, 233);
     margin-left: 25%;
     margin-right: 25%;
     margin-top: 3%;
@@ -17,7 +17,7 @@ body {
 
 
 .rules {
-    background-color: darkgoldenrod;
+    background-color: rgb(255, 230, 216);
     height: 30%;
     margin-left: 11.5%;
     width: 22%;

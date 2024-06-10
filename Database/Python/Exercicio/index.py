@@ -1,10 +1,7 @@
-import sqlite3;
 import os;
+import produtos;
 
-connection = sqlite3.connect('Store.db');
-cursor = connection.cursor();
 inputMenu = int(0);
-
 
 while( True ):
     os.system('cls');

@@ -80,5 +80,32 @@ while( True ):
 
         except:
             print('Something went wrong');
+    
+    if ( inputMenu == 4 ):
+        inputSubMenu = int(0);
+
+        print('\nMenu de atualização.');
+        print('Digite 1 para atualizar o nome.');
+        print('Digite 2 para atualizar o preço.');
+        print('Digite 3 para atualizar a quantidade.');
+
+        inputSubMenu = int(input('Digite: '));
+    
+
+    # DELETE
+    if ( inputMenu == 5 ):
+        data = [];
+        name = str('');
+
+        try:
+            print('\nDeletar um produto.');
+            name = input('Nome do produto: ');
+        
+            data = produtos.delete(name);
+
+            print( f'\n{data['message']}' );
+
+        except:
+            print('Something went wrong');
 
     input('\nAperte ENTER para continuar.');

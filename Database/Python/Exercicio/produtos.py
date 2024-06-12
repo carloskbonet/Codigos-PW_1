@@ -56,5 +56,22 @@ def select():
 def update():
     pass;
 
-def delete():
-    pass;
+def delete(name:str):
+    try:
+        id = 0;
+        cursor.execute('SELECT id FROM Products WHERE name = ?', (name,));
+        product = cursor.fetchone();
+
+        if ( product == None ):
+            return {'code': 404, 'message': 'Product not found'};
+    
+        # A posição 0 de product é o ID
+        id = product[0];
+
+        cursor.execute('DELETE FROM Products WHERE id = ?', (id,));
+        connection.commit();
+
+        return {'code': 204, 'message': 'Product deleted successfully'}
+
+    except:
+        return { 'code': 500 , 'message': 'Internal Error'};

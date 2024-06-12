@@ -17,6 +17,11 @@ cursor.execute('''
 
 def create(name:str , price:float , quantity:int):
     try:
+        productByName = findByName(name);
+
+        if ( productByName['code'] == 200 ):
+            return {'code': 400, 'message': 'Product already exist '};
+
         cursor.execute('INSERT INTO Products (name,price,quantity) VALUES (?,?,?)', (name , price , quantity));
         connection.commit();
     
@@ -24,8 +29,18 @@ def create(name:str , price:float , quantity:int):
     except:
         return {'code': 500 , 'message' : 'Internal Error'};
 
-def findBy():
-    pass;
+def findByName(name:str):
+    try:
+        cursor.execute('SELECT name,price,quantity FROM Products WHERE name = ?', (name,));
+        product = cursor.fetchone();
+    
+        if ( product == None ):
+            return {'code': 404, 'message' : 'Product not found'};
+        
+        return {'code': 200, 'data': product};
+
+    except:
+        return {'code': 500 , 'message' : 'Internal Error'};
 
 def select():
     try:
@@ -36,7 +51,7 @@ def select():
         return { 'code': 200 , 'data': products};
     
     except:
-        return { 'code': 500 , 'data': 'Internal Error'};
+        return { 'code': 500 , 'message': 'Internal Error'};
 
 def update():
     pass;

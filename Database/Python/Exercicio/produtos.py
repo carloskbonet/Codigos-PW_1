@@ -20,7 +20,7 @@ def create(name:str , price:float , quantity:int):
         productByName = findByName(name);
 
         if ( productByName['code'] == 200 ):
-            return {'code': 400, 'message': 'Product already exist '};
+            return {'code': 400, 'message': 'Product already exist'};
 
         cursor.execute('INSERT INTO Products (name,price,quantity) VALUES (?,?,?)', (name , price , quantity));
         connection.commit();
@@ -53,8 +53,89 @@ def select():
     except:
         return { 'code': 500 , 'message': 'Internal Error'};
 
-def update():
-    pass;
+
+
+
+
+def updateName(oldName:str , newName:str):
+    try:
+        id = 0;
+        # Verificar se o nome antigo existe
+        cursor.execute('SELECT id FROM Products WHERE name = ?', (oldName,));
+        product = cursor.fetchone();
+
+        if ( product == None ):
+            return {'code': 404, 'message': 'Product not found'};
+
+        # A posição 0 de product é o ID
+        id = product[0];
+    
+        # Verificar se o novo name já existe
+        productByName = findByName(newName);
+    
+        if ( productByName['code'] == 200 ):
+            return {'code': 400 , 'message': 'Product name already exist'};
+
+        # Atualizar o produto
+        cursor.execute('UPDATE Products SET name = ? WHERE id = ?', ( newName , id ));
+        connection.commit();
+    
+        return { 'code': 202 , 'message': 'Product updated successfully'}
+
+    except:
+        return { 'code': 500 , 'message': 'Internal Error'};
+
+
+
+# Fazer esse (A função deve atualizar o preço de um produto);
+def updatePrice(name:str , price:float):
+    try:
+        id = 0;
+        cursor.execute('SELECT id FROM Products WHERE name = ?', (name,));
+        product = cursor.fetchone();
+
+        if ( product == None ):
+            return {'code': 404, 'message': 'Product not found'};
+    
+        # A posição 0 de product é o ID
+        id = product[0];
+    
+        # Update do produto
+        cursor.execute('UPDATE Products SET price = ? WHERE id = ?' , (price , id));
+        connection.commit();
+    
+        return { 'code': 202 , 'message': 'Product updated successfully'}
+
+    except:
+        return { 'code': 500 , 'message': 'Internal Error'};
+
+
+
+
+
+def updateQuantity(name:str , newQuantity:int):
+    try:
+        id = 0;
+        cursor.execute('SELECT id FROM Products WHERE name = ?', (name,));
+        product = cursor.fetchone();
+
+        if ( product == None ):
+            return {'code': 404, 'message': 'Product not found'};
+    
+        # A posição 0 de product é o ID
+        id = product[0];
+    
+        cursor.execute('UPDATE Products SET quantity = ? WHERE id = ?' , ( newQuantity , id ));
+        connection.commit();
+    
+        return { 'code': 202 , 'message': 'Product updated successfully'}
+
+    except:
+        return { 'code': 500 , 'message': 'Internal Error'};
+
+
+
+
 
 def delete(name:str):
     try:

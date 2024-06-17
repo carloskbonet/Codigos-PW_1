@@ -1,0 +1,11 @@
+
+.container {
+    background-color: rgb(140, 209, 140);
+    height: 400px;
+    width: 600px;
+    margin-left: 28%;
+    border: 1px solid rgba(0, 0, 0, 0.425);
+    border-radius: 8px;
+    margin-top: 70px;
+    padding: 2%;
+}

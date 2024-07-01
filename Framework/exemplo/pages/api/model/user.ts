@@ -15,3 +15,26 @@ export async function createUserModel(_name:string , _username:string, _password
 
     return user;
 }
+
+
+export async function findUserModelByCPF (_cpf : string) {
+
+    const user = await prisma.user.findUnique({
+        where: {
+            cpf : _cpf
+        }
+    });
+
+    return user;
+}
+
+export async function findUserModelByUsername (_username : string) {
+
+    const user = await prisma.user.findUnique({
+        where: {
+            username : _username
+        }
+    });
+
+    return user;
+}

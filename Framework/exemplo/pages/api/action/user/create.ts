@@ -14,10 +14,5 @@ export default async ( req: NextApiRequest , res: NextApiResponse ) => {
     // Criar o usuário - Chamar controller
     const response:any = await createUser(username , password , confirmPassword , cpf , name);
 
-    if ( response.message != undefined ) {
-        return res.status(403).json( response );
-    }
-    else {
-        return res.status(201).json( response );
-    }
+    return res.status( response.status ).json( response.message );
 }

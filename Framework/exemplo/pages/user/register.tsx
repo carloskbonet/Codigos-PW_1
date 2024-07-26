@@ -22,10 +22,27 @@ export default function registerPage() {
         });
     }
 
-    function formSubmit(event:any) {
+    async function formSubmit(event:any) {
         event.preventDefault();
 
         console.log(formData);
+
+        try {
+            const response = await fetch(`/api/action/user/create` , {
+                method: 'POST',
+                headers: { 'Content-type':'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            const responseJson = await response.json();
+
+            alert(`${response.status} \n${responseJson}`);
+
+
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
 
 

@@ -1,0 +1,57 @@
+
+.container {
+    background-color: rgb(255, 255, 255);
+    height: 350px;
+    width: 900px;
+    border: 1px solid rgba(0, 0, 0, 0.425);
+    border-radius: 30px;
+    margin-top: 70px;
+    padding: 2%;
+    margin-left: 16%;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.container h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#main {
+    background-color: rgb(224, 233, 238);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('/background.png');
+    background-size: cover;
+}
+
+.input {
+    border: 1px solid rgba(0, 0, 0, 0.575);
+    border-radius: 6px;
+    width: 80%;
+    padding: 1%;
+    font-size: 18px;
+    margin-top: 1%;
+}
+
+#submitBtn {
+    background-color: #2244df;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+    border-radius: 40px;
+    width: 33%;
+    height: 12%;
+    float: right;
+    margin-right: 22%;
+}
+
+#submitBtn:hover {
+    background-color: #1934ac;
+    cursor: pointer;
+}
+
+#infos img {
+    width: 30%;
+}
+
+

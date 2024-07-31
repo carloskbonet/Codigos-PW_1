@@ -1,4 +1,4 @@
-import { createUserModel , findUserModelByCPF, findUserModelByUsername } from "../model/user";
+import { createUserModel , findUserModelByCPF, findUserModelByUsername, findUserModelLogin } from "../model/user";
 
 export async function createUser(_username:string , _password:string , _confirmPassword:string , _cpf:string , _name = "") {
     // Realizar verificações em atributos Únicos das tabelas.
@@ -24,6 +24,26 @@ export async function createUser(_username:string , _password:string , _confirmP
         const response = await createUserModel( _name , _username , _password , _cpf );
 
         return { status: 201 , message: 'User registered' , data: response };
+
+    }
+    catch(err) {
+        return { status: 500 , message: 'Something went wrong' };
+    }
+}
+
+
+
+export async function login(_username: string , _password: string) {
+    try {
+
+        const userLogin = await findUserModelLogin(_username , _password);
+
+        if ( userLogin == undefined ) {
+            return { status: 404, message: 'Incorrect username or password' }
+        }
+        else {
+            return { status: 200, message: 'Logged In' };
+        }
 
     }
     catch(err) {

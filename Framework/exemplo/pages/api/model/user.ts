@@ -17,6 +17,7 @@ export async function createUserModel(_name:string , _username:string, _password
 }
 
 
+// Read
 export async function findUserModelByCPF (_cpf : string) {
 
     const user = await prisma.user.findUnique({
@@ -28,6 +29,7 @@ export async function findUserModelByCPF (_cpf : string) {
     return user;
 }
 
+// Read
 export async function findUserModelByUsername (_username : string) {
 
     const user = await prisma.user.findUnique({
@@ -37,4 +39,18 @@ export async function findUserModelByUsername (_username : string) {
     });
 
     return user;
+}
+
+
+export async function findUserModelLogin(_username : string , _password : string) {
+
+    const user = await prisma.user.findUnique({
+        where: {
+            username: _username ,
+            password: _password
+        }
+    });
+
+    return user;
+
 }

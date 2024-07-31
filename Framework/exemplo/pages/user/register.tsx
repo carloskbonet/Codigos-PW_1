@@ -1,5 +1,6 @@
 import styles from '@/styles/register.module.css';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function registerPage() {
@@ -54,7 +55,7 @@ export default function registerPage() {
 
             <form className={styles.container} onSubmit={formSubmit}>
                 <div id={styles.infos}>
-                    <img src='/icone.png' alt="" />
+                    <img src='/pipoca.png' alt="" />
                     <h2>Crie sua conta</h2>
                 </div>
 
@@ -72,7 +73,10 @@ export default function registerPage() {
                     
 
                     <br />
-                    <input id={styles.submitBtn} type="submit" value='Enviar' />
+                    <div className={styles.btns}>
+                        <Link className={styles.redirect} href={`/user/login`}>Já tenho uma conta</Link>
+                        <input id={styles.submitBtn} type="submit" value='Enviar' />
+                    </div>
                 </div>
 
             </form>

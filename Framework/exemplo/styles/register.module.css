@@ -33,7 +33,6 @@
     border-radius: 40px;
     width: 33%;
     height: 12%;
-    margin-top: 10%;
     float: right;
     margin-right: 22%;
 }
@@ -50,4 +49,12 @@
 #infos h2 {
     font-size: 28px;
     font-weight: bold;
+}
+
+.redirect {
+}
+
+.btns {
+    margin-top: 10%;
+    height: 100%;
 }

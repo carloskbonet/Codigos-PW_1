@@ -1,11 +1,20 @@
 import jwt from 'jsonwebtoken';
 
-const SECRET = '123';
+const SECRET = process.env.NEXT_PUBLIC_JWT_SECRET;
 
-export function generateToken() {
-
+export function generateToken(_username) {
+    return jwt.sign( { username: _username } , SECRET );
 }
 
-export function readToken() {
-    
+function readToken(token) {
+    try {
+        return jwt.verify(token , SECRET);
+    }
+    catch(err) {
+        throw new ('Invalid Token');
+    }
+}
+
+export function checkToken(token) {
+    return readToken(token);
 }

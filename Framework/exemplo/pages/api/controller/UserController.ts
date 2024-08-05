@@ -1,4 +1,5 @@
 import { createUserModel , findUserModelByCPF, findUserModelByUsername, findUserModelLogin } from "../model/user";
+import { generateToken } from '@/services/tokenConfig';
 
 export async function createUser(_username:string , _password:string , _confirmPassword:string , _cpf:string , _name = "") {
     // Realizar verificações em atributos Únicos das tabelas.
@@ -42,7 +43,9 @@ export async function login(_username: string , _password: string) {
             return { status: 404, message: 'Incorrect username or password' }
         }
         else {
-            return { status: 200, message: 'Logged In' };
+            const _token = generateToken(_username); 
+
+            return { status: 200, message: 'Logged In', token: _token };
         }
 
     }

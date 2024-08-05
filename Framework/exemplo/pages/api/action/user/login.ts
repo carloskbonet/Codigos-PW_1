@@ -2,7 +2,7 @@ import { NextApiRequest , NextApiResponse } from "next";
 import { login } from "../../controller/UserController";
 
 export default async ( req: NextApiRequest , res: NextApiResponse ) => {
-    if ( req.method != 'GET' ) {
+    if ( req.method != 'POST' ) {
         return res.status(403).json( { message: 'Method not allowed' } );
     }
 
@@ -14,6 +14,10 @@ export default async ( req: NextApiRequest , res: NextApiResponse ) => {
     //Chamar controller
     const response = await login(username , password);
 
-    return res.status( response.status ).json( response.message );
-
+    if ( response.status == 200 ) {
+        return res.status( response.status ).json( { message: response.message , token: response.token } );
+    }
+    else {
+        return res.status( response.status ).json( { message: response.message } );
+    }
 }

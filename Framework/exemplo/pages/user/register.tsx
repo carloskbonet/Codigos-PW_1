@@ -2,8 +2,12 @@ import styles from '@/styles/register.module.css';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
+import { getCookie } from 'cookies-next';
+import { checkToken } from '@/services/tokenConfig';
+import { useRouter } from 'next/router';
 
 export default function registerPage() {
+    const router = useRouter();
 
     // Formulário a ser enviado para o servidor
     const [ formData , setFormData ] = useState(
@@ -26,8 +30,6 @@ export default function registerPage() {
     async function formSubmit(event:any) {
         event.preventDefault();
 
-        console.log(formData);
-
         try {
             const response = await fetch(`/api/action/user/create` , {
                 method: 'POST',
@@ -37,9 +39,11 @@ export default function registerPage() {
             
             const responseJson = await response.json();
 
-            alert(`${response.status} \n${responseJson}`);
+            alert(`${responseJson.message}`);
 
-
+            if ( response.status == 201 ){
+                router.push(`/user/login`);
+            }
         }
         catch(err) {
             console.log(err);
@@ -83,4 +87,36 @@ export default function registerPage() {
 
         </main>
     );
+}
+
+
+export function getServerSideProps( {req , res}:any ) {
+    try {
+        // Procura o cookie no navegador e armazena o valor do token
+        const token = getCookie('authorization' , {req , res});
+
+        // Se o cookie não existir, vamos lançar um erro
+        if ( !token ) {
+            throw new Error('Invalid Token');
+        }
+
+        // Verifica se o token é verdadeiro
+        checkToken(token);
+
+        // Se o token for verdadeiro, envia o usuário para dentro do sistema
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/',
+            },
+            props: {}
+        }
+
+    }
+    catch (err) {
+        // Caso o token não exista ou seja inválido, a função executará o código abaixo
+        return {
+            props: {}
+        }
+    }
 }

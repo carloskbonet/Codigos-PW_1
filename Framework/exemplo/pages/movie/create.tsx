@@ -21,8 +21,18 @@ export default function createMovie() {
     }
 
     async function formSubmit(event:any) {
-        event.preventDefault();
         try {
+            const response = await fetch(`/api/action/movie/create` , 
+                {
+                    method: 'POST',
+                    headers: { 'Content-type' : 'application/json' },
+                    body: JSON.stringify(formData)
+                }
+            );
+
+            const responseJson = await response.json();
+
+            alert(responseJson.message);
 
         }
         catch (err) {
@@ -37,7 +47,7 @@ export default function createMovie() {
             </Head>
 
             <div>
-                <form className={styles.formContainer}>
+                <form className={styles.formContainer} onSubmit={formSubmit}>
 
                     <input className={styles.input} type="text" placeholder="Nome" onChange={(event) => {handleFormEdit(event , 'name')}} />
                     <div className={styles.boxInput}>

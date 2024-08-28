@@ -10,23 +10,6 @@
     grid-template-columns: 20% 60% 20%;
 }
 
-.mainContainer {
-    display: grid;
-    grid-template-columns: 30% 70%;
-}
-
-.leftContainer {
-    background-color: rgb(157, 218, 157);
-    height: 100vh;
-    width: 100vw;
-}
-
-.rightContainer {
-    background-color: rgb(218, 190, 157);
-    height: 100vh;
-    width: 100vw;
-}
-
 .icon {
     width: 35%;
     border-radius: 20px;
@@ -46,4 +29,51 @@
     border-radius: 15px;
     margin-left: 10%;
     margin-top: 10%;
+}
+
+.mainContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.leftContainer {
+    background-color: rgb(157, 218, 157);
+    height: 100vh;
+    width: 100vw;
+}
+
+.rightContainer {
+    background-color: rgb(218, 190, 157);
+    height: 100vh;
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.card {
+    width: 90%;
+    height: 30vh;
+    background-color: rgba(0, 0, 0, 0.658);
+    border: 1px solid black;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    padding: 1%;
+    margin-top: 1.5%;
+    margin-left: 1%;
+}
+
+.cardImg {
+    max-width: 100%;
+    max-height: 34vh;
+}
+
+.cardInfos {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cardInfos h2 {
+    font-size: 24px;
+    font-weight: bold;
 }

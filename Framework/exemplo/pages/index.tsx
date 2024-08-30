@@ -2,8 +2,13 @@ import { getCookie } from "cookies-next";
 import { checkToken } from "@/services/tokenConfig";
 import styles from '@/styles/home.module.css'
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Home() {
+
+  const router = useRouter();
+
   // Constante para armazenar os filmes
   const [data, setData]: any = useState(undefined);
 
@@ -32,7 +37,10 @@ export default function Home() {
 
   }, [])
 
-
+  function movieClick(movieName:string) {
+    //Redirecionar para a página do filme
+    router.push(`/movie/` + movieName);
+  }
 
 
   return (
@@ -40,7 +48,11 @@ export default function Home() {
       <nav className={styles.navBar}>
         <img className={styles.icon} src="/pipoca.png" alt="" />
         <input className={styles.searchBar} type="text" />
-        <button className={styles.logoutBtn}>Logout</button>
+
+        <div>
+          <Link href={`/movie/create`}>Criar Filme</Link>
+          <button className={styles.logoutBtn}>Logout</button>
+        </div>
       </nav>
 
       <div className={styles.mainContainer}>
@@ -56,8 +68,8 @@ export default function Home() {
 
             data.map(movie => (
 
-              <div className={styles.card}>
-                <img src="/card.jfif" alt="" className={styles.cardImg} />
+              <div onClick={() => { movieClick(movie.name) }} className={styles.card}>
+                <img src={movie.imageURL} alt="" className={styles.cardImg} />
                 <div className={styles.cardInfos}>
                   <h2>{movie.name}</h2>
                   <p>{movie.releaseDate}</p>

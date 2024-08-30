@@ -30,3 +30,21 @@ export async function selectMovies() {
         return { status: 500 , message: 'Something went wrong' };
     }
 }
+
+
+export async function findMovieByName(_name:string) {
+    try {
+        const movieByName = await findMovieModelByName(_name);
+
+        if ( movieByName == undefined ) {
+            return { status: 404, message: 'Movie not found' };
+        }
+        else {
+            return { status: 200, message: 'Movie found', data: movieByName };
+        }
+        
+    }
+    catch (err) {
+        return { status: 500 , message: 'Something went wrong' };
+    }
+}

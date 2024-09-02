@@ -13,28 +13,37 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-
 model user {
-  id  Int @id @unique @default(autoincrement())
+  id Int @id @unique @default(autoincrement())
 
-  name  String?
-  username  String  @unique
-  password  String
-  cpf String  @unique
+  name     String?
+  username String  @unique
+  password String
+  cpf      String  @unique
 
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model movie {
   id Int @id @unique @default(autoincrement())
 
-  name String @unique
+  name        String  @unique
   releaseDate String
-  imageURL String?
-  videoURL String?
+  imageURL    String?
+  videoURL    String?
   description String?
 
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model rating {
+  id Int @id @unique @default(autoincrement())
+
+  value Int
+  comment String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

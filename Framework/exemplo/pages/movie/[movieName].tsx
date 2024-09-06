@@ -2,9 +2,13 @@ import styles from '@/styles/movie.module.css'
 import { getCookie } from 'cookies-next';
 import { checkToken } from '@/services/tokenConfig';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function movie({ movieName }: any) {
     const [data, setData]: any = useState();
+
+    const router = useRouter();
+
     // Formulário de avaliação
     const [formRating, setFormRating] = useState(
         {
@@ -45,6 +49,7 @@ export default function movie({ movieName }: any) {
             const responseJson = await response.json();
 
             alert(responseJson.message);
+            router.reload();
         }
         catch (err) {
             console.log(err);
@@ -106,17 +111,22 @@ export default function movie({ movieName }: any) {
                         </form>
 
                         <div className={styles.comments}>
-                            <div className={styles.commentCard}>
-                                <div className={styles.commentInfos}>
-                                    <label>Nome do usuário</label>
-                                    <label className={styles.valueR}>(5) / 5 Recomendação</label>
+                            <h1 className={styles.commentTitle}>Comentários</h1>
+                            {
+                            data.ratings.map((rating:any) => (
+                                <div className={styles.commentCard}>
+                                    <div className={styles.commentInfos}>
+                                        <label>{rating.user.username}</label>
+                                        <label className={styles.valueR}>({rating.value}) / 5 Recomendação</label>
+                                    </div>
+                                    <br />
+                                    <div className={styles.commentBox}>
+                                        <label>{rating.comment}</label>
+                                    </div>
                                 </div>
-                                <br />
-                                <div className={styles.commentBox}>
-                                    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</label>
-                                </div>
-                            </div>
 
+                            ))
+                            }
                         </div>
                     </div>
 

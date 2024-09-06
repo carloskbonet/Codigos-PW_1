@@ -24,6 +24,13 @@ export async function findMovieModelByName(_name: string) {
         {
             where: {
                 name: _name
+            },
+            include: {
+                ratings: {
+                    include: {
+                        user: true
+                    }
+                }
             }
         }
     );

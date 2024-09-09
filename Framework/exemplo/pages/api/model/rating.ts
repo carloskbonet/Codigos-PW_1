@@ -21,3 +21,30 @@ export async function createRatingModel(_value:number , _comment:string , _userI
 
     return rating;
 }
+
+
+export async function findRatingUser( _userId:number , _movieId:number ) {
+    const rating = await prisma.rating.findFirst({
+        where: {
+            userId: _userId,
+            movieId: _movieId
+        }
+    });
+
+    return rating;
+}
+
+
+export async function updateRating(_id:number , _value:number , _comment:string) {
+    const rating = await prisma.rating.update({
+        where: {
+            id: _id
+        },
+        data: {
+            value: _value,
+            comment: _comment
+        }
+    });
+
+    return rating;
+}

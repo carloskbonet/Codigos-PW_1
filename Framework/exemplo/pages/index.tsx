@@ -1,4 +1,4 @@
-import { getCookie , deleteCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 import { checkToken } from "@/services/tokenConfig";
 import styles from '@/styles/home.module.css'
 import { useState, useEffect } from "react";
@@ -11,6 +11,10 @@ export default function Home() {
 
   // Constante para armazenar os filmes
   const [data, setData]: any = useState(undefined);
+  const [saveData, setSaveData]: Array<any> = useState(undefined);
+
+  // Utilizada para armazenar o nome digitado na barra de pesquisa
+  const [name, setName] = useState("");
 
   // Função para receber os dados dos filmes
   async function fetchData() {
@@ -21,8 +25,8 @@ export default function Home() {
 
       const responseJson = await response.json();
 
-      console.log(responseJson.data);
       setData(responseJson.data);
+      setSaveData(responseJson.data);
 
     }
     catch (err) {
@@ -37,7 +41,7 @@ export default function Home() {
 
   }, [])
 
-  function movieClick(movieName:string) {
+  function movieClick(movieName: string) {
     //Redirecionar para a página do filme
     router.push(`/movie/` + movieName);
   }
@@ -48,11 +52,41 @@ export default function Home() {
     router.reload();
   }
 
+  function handleNameEdit(event: any) {
+    setName(event.target.value);
+  }
+
+  function searchFilter(array: any, text: string) {
+    console.log(text)
+    if (text == '') {
+      return array;
+    }
+    else {
+      return array.filter((el: any) => el.name.toLowerCase().includes(text));
+    }
+  }
+
+  function formSubmit(e: any) {
+    e.preventDefault();
+    try {
+      const filteredArray = searchFilter(saveData, name);
+
+      setData(filteredArray);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+
   return (
     <main id={styles.main} className='flex min-h-screen flex-col'>
       <nav className={styles.navBar}>
         <img className={styles.icon} src="/pipoca.png" alt="" />
-        <input className={styles.searchBar} type="text" />
+        <form onSubmit={formSubmit}>
+          <input className={styles.searchBar} type="text" onChange={handleNameEdit} />
+          <input type="submit" className={styles.searchImg} />
+        </form>
 
         <div>
           <Link href={`/movie/create`}>Criar Filme</Link>

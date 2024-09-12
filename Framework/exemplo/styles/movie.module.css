@@ -135,3 +135,41 @@
 .valueR {
     text-align: right;
 }
+
+
+
+
+
+
+.star_rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.radio_input {
+    position: fixed;
+    opacity: 0;
+}
+
+.radio_label {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.2);
+    transition: color 0.1s ease-in-out;
+}
+
+.radio_label:before {
+    content: "★";
+    display: inline-block;
+    font-size: 32px;
+}
+
+.radio_input:checked~.radio_label {
+    color: #ffc700;
+    color: gold;
+}
+
+.radio_label:hover,
+.radio_label:hover~.radio_label {
+    color: goldenrod;
+}

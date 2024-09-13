@@ -147,29 +147,28 @@
     justify-content: flex-end;
 }
 
-.radio_input {
+
+.radio_hide {
     position: fixed;
     opacity: 0;
 }
 
-.radio_label {
+.radio_star {
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.2);
-    transition: color 0.1s ease-in-out;
+    color: rgba(255, 255, 255, 0.452);
 }
 
-.radio_label:before {
-    content: "★";
+.radio_star:before {
+    content: '★';
     display: inline-block;
-    font-size: 32px;
+    font-size: 30px;
 }
 
-.radio_input:checked~.radio_label {
-    color: #ffc700;
-    color: gold;
-}
-
-.radio_label:hover,
-.radio_label:hover~.radio_label {
+.radio_star:hover ,
+.radio_star:hover~.radio_star {
     color: goldenrod;
+}
+
+.radio_hide:checked~.radio_star {
+    color: gold;
 }

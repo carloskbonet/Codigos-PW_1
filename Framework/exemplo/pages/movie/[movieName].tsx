@@ -105,21 +105,25 @@ export default function movie({ movieName }: any) {
 
                         <form className={styles.formRating} onSubmit={formSubmit}>
 
-                            <form className={styles.star_rating}>
+                            <div className={styles.star_rating}>
 
-                                <input className={styles.radio_input} id='star5' type="radio" name="star-input" value="5" onChange={(e) => { handleFormEdit(e, 'value') }} />
-                                <label className={styles.radio_label} htmlFor='star5' ></label>
+                                <input className={styles.radio_hide} type="radio" id='star_5' name='stars' value='5' onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                <label className={styles.radio_star} htmlFor='star_5' ></label>
 
-                                <input className={styles.radio_input} id='star4' type="radio" name="star-input" value="4" onChange={(e) => { handleFormEdit(e, 'value') }} />
-                                <label className={styles.radio_label} htmlFor='star4' ></label>
+                                <input className={styles.radio_hide} type="radio" id='star_4' name='stars' value='4' onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                <label className={styles.radio_star} htmlFor='star_4' ></label>
 
-                                <input className={styles.radio_input} id='star3' type="radio" name="star-input" value="3" onChange={(e) => { handleFormEdit(e, 'value') }} />
-                                <label className={styles.radio_label} htmlFor='star3' ></label>
+                                <input className={styles.radio_hide} type="radio" id='star_3' name='stars' value='3' onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                <label className={styles.radio_star} htmlFor='star_3' ></label>
 
-                            </form>
+                                <input className={styles.radio_hide} type="radio" id='star_2' name='stars' value='2' onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                <label className={styles.radio_star} htmlFor='star_2' ></label>
 
-                            <h2>Digite uma nota (0 a 5)</h2>
-                            <input className={styles.value} type="number" onChange={(e) => { handleFormEdit(e, 'value') }} /><br />
+                                <input className={styles.radio_hide} type="radio" id='star_1' name='stars' value='1' onChange={(e) => { handleFormEdit(e, 'value') }} />
+                                <label className={styles.radio_star} htmlFor='star_1' ></label>
+
+
+                            </div>
                             <textarea className={styles.comment} placeholder='Digite um comentário' onChange={(e) => { handleFormEdit(e, 'comment') }} ></textarea><br />
                             <input className={styles.btnSubmit} type="submit" />
                         </form>
